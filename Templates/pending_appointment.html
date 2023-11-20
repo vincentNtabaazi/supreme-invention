@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+  </head>
+  <body>
+    {% block content %}
+    <div class="page-nav no-margin row">
+      <div class="container">
+          <div class="row">
+              <h2>Your Pending Appointments</h2>
+              <ul>
+                  <li> <a href="/"><i class="fas fa-home"></i> Home</a></li>
+                  <li><i class="fas fa-angle-double-right"></i> Pending Appointments</li>
+              </ul>
+          </div>
+      </div>
+  </div>
+    <div class="appointment_list">
+      <ul class="unorderedList" 
+      style="display:flex; 
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;"
+      >
+          {% for appointment in appointments %}
+          <div class = "appoint" 
+          style="width:50%; 
+          background-color:#6A6A6A; 
+          display:flex; 
+          margin-bottom:30px; 
+          border-radius:15px;"
+          >
+            <div class = "appointchild1" 
+            style="margin: 30px; 
+            color:white"
+            >
+              <i class="fa fa-circle " aria-hidden="true"></i>
+            </div>
+            <div class = "appointchild2" style="color:white">
+              <li>{{appointment.description}}</li>
+              <li>{{appointment.area}}</li>
+              <li>{{appointment.appointmentDate}}</li>
+            </div>
+          </div>
+          {% empty %}
+            <li>No topics have been added yet.</li>
+          {% endfor %}
+      </ul>
+    </div>
+    
+    
+    {% endblock content %}
+    
+  </body>
+</html>
+

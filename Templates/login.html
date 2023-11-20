@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="page-nav no-margin row">
+  <div class="container">
+    <div class="container">
+      <form method="post" action="login" id="login-form">
+        <div>
+          <p id="logintitle">LOG IN</p>
+        {% csrf_token %}
+          <input type="text" name="username" placeholder="Username" value="{{data.username}}">
+          <input type="password" name="password" placeholder="Password">
+          <div class="alert">
+          {% if messages %}
+        {% for message in messages %}
+            <ul>
+              <li></i>{{message}}</li>
+            </ul>
+        {% endfor %}
+      {% endif %}
+    </div>
+        </div>
+        <button class="login2" name="submit">Log in</button>
+        <input type="hidden" name="next" value="index" />
+        <p class="login_register_link">Create an account  <a href="register">REGISTER</a></p>
+      </form>
+    </div>
+  </div>
+</div>
+  {% endblock content %}

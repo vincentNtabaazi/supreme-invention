@@ -1,0 +1,105 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Wankakyi Medical Services</title>
+
+    <link rel="shortcut icon" href="{%static 'images/fav.jpg'%}">
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/fontawsom-all.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/animate.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{%static 'css_3/custom.css'%}" />
+    
+</head>
+
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 left-item">
+                        <ul>
+                            <li><i class="fas fa-envelope-square"></i> sales@gakyaalimabaga.com</li>
+                            <li><i class="fas fa-phone-square"></i> +256 700123415</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-5 d-none d-lg-block right-item">
+                        <ul>
+                            <li><a><i class="fab fa-github"></i></a></li>
+                            <li><a><i class="fab fa-google-plus-g"></i></a></li>
+                            <li> <a><i class="fab fa-pinterest-p"></i></a></li>
+                            <li><a><i class="fab fa-twitter"></i></a></li>
+                            <li> <a><i class="fab fa-facebook-f"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="nav-head" class="header-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
+                        <img src="{% static "images/logo.jpg" %}" alt="">
+                       <a data-toggle="collapse" data-target="#menu" href="#menu" ><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
+                    </div>
+                    <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="about_us">About Us</a></li>
+                            <li><a href="pending_appointment">Pending Appointments</a></li>
+                            {% if user.is_authenticated %}
+                            <li><span>Hello, {{ user.username }} 👋</span></li>
+                            <li><a href="log_out">Log Out</a></li>
+                            {% else %}
+                            <li><a href="register">Register</a></li>
+                            <li><a href="login">Login</a></li>
+                            {% endif%}
+                        </ul>
+                    </div>
+                    <div class="col-sm-2 d-none d-lg-block appoint">
+                        <a href="book_appointment" ><button class="btn btn-info">Book an Appointment</button></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+
+
+    {% block content %}
+
+    {% endblock content%}
+
+
+  <div class="copy" style="position: fixed; width:100%; bottom:0;">
+          <div class="container">
+              <a href="/">2023 &copy; All Rights Reserved | Designed and Developed by Gakyaali Mabaga Tech Solutions</a>
+              
+              <span>
+              <a><i class="fab fa-github"></i></a>
+              <a><i class="fab fa-google-plus-g"></i></a>
+              <a><i class="fab fa-pinterest-p"></i></a>
+              <a><i class="fab fa-twitter"></i></a>
+              <a><i class="fab fa-facebook-f"></i></a>
+      </span>
+          </div>
+
+      </div>
+
+
+</body>
+
+<script src="{% static "js/jquery-3.2.1.min.js" %} "></script>
+<script src="{% static "js/popper.min.js" %} "></script>
+<script src="{% static "js/bootstrap.min.js" %} "></script>
+<script src="{% static "plugins/scroll-fixed/jquery-scrolltofixed-min.js" %} "></script>
+<script src="{% static "js/script.js" %} "></script>
+
+
+</html>
