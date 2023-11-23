@@ -25,7 +25,7 @@ urlpatterns = [
     path('book_appointment', views.book_appointment, name='book_appointment'),
     path('pending_appointment', views.pending_appointment, name='pending_appointment'),
     path('save_appointment', views.save_appointment, name="save_appointment"),
-    path('register', views.RegistrationView.as_view(), name='register'),
-    path('login', views.LoginView.as_view(), name='login'),
-    path('log_out', views.LogoutView.as_view(), name='logout'),
+    path('register', views.RegistrationView, name='register'),
+    path('login', views.LoginView, name='login'),
+    path('log_out', views.LogoutView, name='logout'),
 ]

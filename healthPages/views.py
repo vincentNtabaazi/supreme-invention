@@ -49,11 +49,8 @@ def save_appointment(request):
       pass
   return render(request, 'book_appointment.html')
 
-class RegistrationView(View):
-    def get(self, request):
-        return render(request, 'register.html')
-
-    def post(self, request):
+def RegistrationView(request):
+    if request.method == "POST":
         context={
             'data':request.POST,
             'has_error':False,
@@ -96,40 +93,16 @@ class RegistrationView(View):
         user.set_password(password)
         user.first_name=full_name
         user.last_name=full_name
-        # user.is_active=False
 
         user.save()
-
-        # current_site=get_current_site(request)
-        # email_subject='Activate your Account.'
-        # message=render_to_string('registration/activate.html',
-        # {
-        #     'user':user,
-        #     'domain':current_site.domain,
-        #     'uid':urlsafe_base64_encode(force_bytes(user.pk)),
-        #     'token':generate_token.make_token(user)                   
-        # }
-        # )
-
-
-        # email_message = EmailMessage(
-        # email_subject,
-        # message,
-        # settings.EMAIL_HOST_USER,
-        # [email],
-        # )
-
-        # Emailthread(email_message).start()
 
         messages.add_message(request, messages.SUCCESS, 'Account is created successfully.')
 
         return redirect('login')
+    return render(request, 'register.html')
     
-class LoginView(View):
-    def get(self, request):
-        return render(request, 'login.html')
-    
-    def post(self, request):
+def LoginView(request):
+    if request.method == "POST":
         context={
             'data':request.POST,
             'has_error':False
@@ -166,9 +139,10 @@ class LoginView(View):
         
         login(request, user)
         return redirect('index')
+    return render(request, 'login.html')
     
-class LogoutView(View):
-    def get(self, request):
+def LogoutView(request):
+    if request.method == "GET":
         logout(request)
         messages.add_message(request,messages.SUCCESS, 'Logged out successfully.')
         return render(request, 'login.html')
